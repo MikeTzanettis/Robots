@@ -8,3 +8,12 @@ class Game(models.Model):
     
     class JSONAPIMeta:
         resource_name = "game"
+
+class Player(models.Model):
+    name = models.TextField(null=False,unique=True)
+    points = models.IntegerField(default=0)
+    game_id = models.ForeignKey(Game,on_delete=models.CASCADE)
+
+    class JSONAPIMeta:
+        resource_name = "player"
+

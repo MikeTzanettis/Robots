@@ -3,4 +3,5 @@ from .models import *
 
 
 admin.site.register(Game)
+admin.site.register(Player)
 # Register your models here.
