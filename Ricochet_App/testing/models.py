@@ -10,9 +10,10 @@ class Game(models.Model):
         resource_name = "game"
 
 class Player(models.Model):
-    name = models.TextField(null=False,unique=True)
+    name = models.CharField(max_length=20,null=False,unique=True)
+    password = models.CharField(max_length=20,null=False)
     points = models.IntegerField(default=0)
-    game_id = models.ForeignKey(Game,on_delete=models.CASCADE)
+    game_id = models.ForeignKey(Game,on_delete=models.SET_NULL,null=True)
 
     class JSONAPIMeta:
         resource_name = "player"

@@ -17,12 +17,17 @@ from django.contrib import admin
 from django.urls import path,include
 from rest_framework import routers
 from testing.views import *
-
+from testing import views
 
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register("games",GameViewSet,"games")
+router.register("players",PlayerViewSet,"players")
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('',views.index,name ='index'),
+    path('login/', views.login,name='login'),
+    path('register/', views.register,name='register'),
+    
 ]
