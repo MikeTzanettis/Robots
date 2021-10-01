@@ -22,12 +22,10 @@ from testing import views
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register("games",GameViewSet,"games")
-router.register("players",PlayerViewSet,"players")
+router.register("users",UserViewSet,"users")
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('',views.index,name ='index'),
-    path('login/', views.login,name='login'),
-    path('register/', views.register,name='register'),
+    path('<str:name>/',views.page)
     
 ]

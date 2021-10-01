@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from testing.models import *
 from testing.serializers import *
 from django.http import HttpResponse
+from rest_framework.response import Response
 from django.http import HttpResponseRedirect
 # Create your views here.
 class GameViewSet(viewsets.ModelViewSet):
@@ -13,18 +14,30 @@ class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
 
 
-class PlayerViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows Sites to be CRUDed.
-    """
-    serializer_class = PlayerSerializer
-    queryset = Player.objects.all()
+class UserViewSet(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+    
+    """ def create(self, request):
+        try:
+            data = request.data
+            s = UserSerializer(data=data)
+            print("Valid data: "+str(s.is_valid()))
+            if s.is_valid():
+                username = data['username']
+                password = data['password']
+                
+                
+                User.objects.create_user(username=username,password=password)
+                return Response(status=201, data=data)
+            else:
+                data = s.errors
+                return Response(status=400, data=data)
+        except Exception as e:
+            print(e)
+            return HttpResponse(status=400) """
 
-def index(request):
-    return render(request, 'index.html')
 
-def login(request):
-    return render(request, 'login.html')
 
-def register(request):
-    return render(request,'register.html')
+def page(request,name):
+    return render(request, name + ".html")

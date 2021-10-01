@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class Game(models.Model):
     turn_number = models.IntegerField(default=0)
@@ -9,12 +9,14 @@ class Game(models.Model):
     class JSONAPIMeta:
         resource_name = "game"
 
-class Player(models.Model):
-    name = models.CharField(max_length=20,null=False,unique=True)
-    password = models.CharField(max_length=20,null=False)
+class User(AbstractUser):
+    role = models.TextField(default="admin")
     points = models.IntegerField(default=0)
-    game_id = models.ForeignKey(Game,on_delete=models.SET_NULL,null=True)
-
+    game_id = models.ForeignKey(Game,null=True,on_delete=models.SET_NULL)
+    def __str__(self):
+        return self.username
     class JSONAPIMeta:
-        resource_name = "player"
+        resource_name = "user"
+
+    
 
