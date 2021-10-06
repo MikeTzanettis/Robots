@@ -18,7 +18,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
     
-    """ def create(self, request):
+    def create(self, request):
         try:
             data = request.data
             s = UserSerializer(data=data)
@@ -35,9 +35,28 @@ class UserViewSet(viewsets.ModelViewSet):
                 return Response(status=400, data=data)
         except Exception as e:
             print(e)
-            return HttpResponse(status=400) """
+            return HttpResponse(status=400) 
 
+class SquareViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows Sites to be CRUDed.
+    """
+    serializer_class = SquareSerializer
+    queryset = Square.objects.all()
 
+class TurnViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows Sites to be CRUDed.
+    """
+    serializer_class = TurnSerializer
+    queryset = Turn.objects.all()
+
+class BidViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows Sites to be CRUDed.
+    """
+    serializer_class = BidSerializer
+    queryset = Bid.objects.all()
 
 def page(request,name):
     return render(request, name + ".html")

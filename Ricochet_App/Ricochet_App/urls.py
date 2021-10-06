@@ -23,6 +23,9 @@ from testing import views
 router = routers.DefaultRouter(trailing_slash=False)
 router.register("games",GameViewSet,"games")
 router.register("users",UserViewSet,"users")
+router.register("squares",SquareViewSet,"squares")
+router.register("turns",TurnViewSet,"turns")
+router.register("bids",BidViewSet,"bids")
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
