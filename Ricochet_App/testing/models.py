@@ -36,6 +36,7 @@ class Square(models.Model):
     posy=models.IntegerField(null=False)
     color=models.CharField(max_length=6,choices=colors)
     symbol=models.CharField(max_length=8,choices=symbols)
+    obstacle=models.IntegerField(null=False)
     game=models.ForeignKey(Game,null=False,on_delete=models.CASCADE)
 
     class JSONAPIMeta:
