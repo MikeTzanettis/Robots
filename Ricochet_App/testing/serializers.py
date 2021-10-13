@@ -28,5 +28,5 @@ class TurnSerializer(serializers.ModelSerializer):
 
 class BidSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Bid
+        model = Square
         fields = ('__all__')

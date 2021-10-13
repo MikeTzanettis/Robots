@@ -1,268 +1,493 @@
-{% load static %}
-
-
-
-
 <html>
-  <head>
-    	<title> Game Information </title>
-    	<meta charset="UTF-8">
-        <link rel="shortcut icon" href="#">
-        
-  </head>
-  <style>
-	.game-board {
-		display:grid;
-		grid-template: repeat(16, 50px) / repeat(16, 50px);
-	}
-	body {
-		display: flex;
-		justify-content: center;
-	}
-	.box15 {
-  		background: rgb(0, 0, 0);
-  		border-top: 4px solid rgb(0, 0, 0);
-		border-right: 4px solid rgb(0, 0, 0);
-		border-bottom: 4px solid rgb(0, 0, 0);
-		border-left: 4px solid rgb(0, 0, 0);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-        
-    }
-	.box14 {
-  		background: rgb(255, 254, 254);
-  		border-top: 4px solid rgb(19, 18, 18);
-		border-right: 4px solid rgb(19, 18, 18);
-		border-bottom: 4px solid rgb(19, 18, 18);
-		border-left: 1px solid rgb(131, 130, 130);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(207, 198, 198);
-    }
-    .box13 {
-  		background: rgb(255, 255, 255);
-  		border-top: 4px solid rgb(19, 18, 18);
-		border-right: 4px solid rgb(19, 18, 18);
-		border-bottom: 1px solid rgb(151, 148, 148);
-		border-left: 4px solid rgb(10, 9, 9);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box12 {
-  		background: rgb(214, 211, 211);
-  		border-top: 4px solid rgb(19, 18, 18);
-		border-right: 4px solid rgb(19, 18, 18);
-		border-bottom: 1px solid rgb(151, 148, 148);
-		border-left: 1px solid rgb(151, 148, 148);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box11 {
-  		background: rgb(214, 211, 211);
-  		border-top: 4px solid rgb(19, 18, 18);
-		border-right: 1px solid rgb(151, 148, 148);
-		border-bottom: 4px solid rgb(19, 18, 18);
-		border-left: 4px solid rgb(10, 9, 9);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box10 {
-  		background: rgb(214, 211, 211);
-  		border-top: 4px solid rgb(19, 18, 18);
-		border-right: 1px solid rgb(151, 148, 148);
-		border-bottom: 4px solid rgb(19, 18, 18);
-		border-left: 1px solid rgb(151, 148, 148);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box9 {
-  		background: rgb(214, 211, 211);
-  		border-top: 4px solid rgb(19, 18, 18);
-		border-right: 1px solid rgb(151, 148, 148);
-		border-bottom: 1px solid rgb(134, 111, 111);
-		border-left: 4px solid rgb(10, 9, 9);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box8 {
-  		background: rgb(214, 211, 211);
-  		border-top: 4px solid rgb(19, 18, 18);
-		border-right: 1px solid rgb(151, 148, 148);
-		border-bottom: 1px solid rgb(151, 148, 148);
-		border-left: 1px solid rgb(151, 148, 148);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box7 {
-  		background: rgb(214, 211, 211);
-  		border-top: 1px solid rgb(151, 148, 148);
-		border-right: 4px solid rgb(19, 18, 18);
-		border-bottom: 4px solid rgb(19, 18, 18);
-		border-left: 4px solid rgb(10, 9, 9);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box6 {
-  		background: rgb(214, 211, 211);
-  		border-top: 1px solid rgb(151, 148, 148);
-		border-right: 4px solid rgb(19, 18, 18);
-		border-bottom: 4px solid rgb(19, 18, 18);
-		border-left: 1px solid rgb(151, 148, 148);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box5 {
-  		background: rgb(214, 211, 211);
-  		border-top: 1px solid rgb(151, 148, 148);
-		border-right: 4px solid rgb(19, 18, 18);
-		border-bottom: 1px solid rgb(151, 148, 148);
-		border-left: 4px solid rgb(10, 9, 9);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box4 {
-  		background: rgb(214, 211, 211);
-  		border-top: 1px solid rgb(151, 148, 148);
-		border-right: 4px solid rgb(19, 18, 18);
-		border-bottom: 1px solid rgb(151, 148, 148);
-		border-left: 1px solid rgb(151, 148, 148);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box3 {
-  		background: rgb(214, 211, 211);
-  		border-top: 1px solid rgb(151, 148, 148);
-		border-right: 1px solid rgb(151, 148, 148);
-		border-bottom: 4px solid rgb(19, 18, 18);
-		border-left: 4px solid rgb(10, 9, 9);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box2 {
-  		background: rgb(214, 211, 211);
-  		border-top: 1px solid rgb(151, 148, 148);
-		border-right: 1px solid rgb(151, 148, 148);
-		border-bottom: 4px solid rgb(19, 18, 18);
-		border-left: 1px solid rgb(151, 148, 148);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box1 {
-  		background: rgb(214, 211, 211);
-  		border-top: 1px solid rgb(151, 148, 148);
-		border-right: 1px solid rgb(151, 148, 148);
-		border-bottom: 1px solid rgb(151, 148, 148);
-		border-left: 4px solid rgb(10, 9, 9);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .box0 {
-  		background: rgb(214, 211, 211);
-  		border-top: 1px solid rgb(151, 148, 148);
-		border-right: 1px solid rgb(151, 148, 148);
-		border-bottom: 1px solid rgb(151, 148, 148);
-		border-left: 1px solid rgb(151, 148, 148);
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		color: rgb(224, 218, 218);
-    }
-    .image {
-        width:40px
-    }
-  </style>
-  <body>
-    
-	
+<head>
+	<title> Game Information </title>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="#">
 
+</head>
+<style>
+.animate {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	border-radius: 50%;
+	background-color: red;
+}
+.game-board {
+	display:grid;
+	grid-template: repeat(16, 50px) / repeat(16, 50px);
+}
 
-        
+body {
+	display: flex;
+	justify-content: left;
+}
+.button {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: red;
+}
+.box15 {
+	background: rgb(0, 0, 0);
+	border-top: 4px solid rgb(0, 0, 0);
+	border-right: 4px solid rgb(0, 0, 0);
+	border-bottom: 4px solid rgb(0, 0, 0);
+	border-left: 4px solid rgb(0, 0, 0);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
 
-	<div id="grid"> </div>
-    	<script>
+}
+.box14 {
+	background: rgb(255, 254, 254);
+	border-top: 4px solid rgb(19, 18, 18);
+	border-right: 4px solid rgb(19, 18, 18);
+	border-bottom: 4px solid rgb(19, 18, 18);
+	border-left: 1px solid rgb(131, 130, 130);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(207, 198, 198);
+}
+.box13 {
+	background: rgb(255, 255, 255);
+	border-top: 4px solid rgb(19, 18, 18);
+	border-right: 4px solid rgb(19, 18, 18);
+	border-bottom: 1px solid rgb(151, 148, 148);
+	border-left: 4px solid rgb(10, 9, 9);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box12 {
+	background: rgb(214, 211, 211);
+	border-top: 4px solid rgb(19, 18, 18);
+	border-right: 4px solid rgb(19, 18, 18);
+	border-bottom: 1px solid rgb(151, 148, 148);
+	border-left: 1px solid rgb(151, 148, 148);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box11 {
+	background: rgb(214, 211, 211);
+	border-top: 4px solid rgb(19, 18, 18);
+	border-right: 1px solid rgb(151, 148, 148);
+	border-bottom: 4px solid rgb(19, 18, 18);
+	border-left: 4px solid rgb(10, 9, 9);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box10 {
+	background: rgb(214, 211, 211);
+	border-top: 4px solid rgb(19, 18, 18);
+	border-right: 1px solid rgb(151, 148, 148);
+	border-bottom: 4px solid rgb(19, 18, 18);
+	border-left: 1px solid rgb(151, 148, 148);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box9 {
+	background: rgb(214, 211, 211);
+	border-top: 4px solid rgb(19, 18, 18);
+	border-right: 1px solid rgb(151, 148, 148);
+	border-bottom: 1px solid rgb(134, 111, 111);
+	border-left: 4px solid rgb(10, 9, 9);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box8 {
+	background: rgb(214, 211, 211);
+	border-top: 4px solid rgb(19, 18, 18);
+	border-right: 1px solid rgb(151, 148, 148);
+	border-bottom: 1px solid rgb(151, 148, 148);
+	border-left: 1px solid rgb(151, 148, 148);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box7 {
+	background: rgb(214, 211, 211);
+	border-top: 1px solid rgb(151, 148, 148);
+	border-right: 4px solid rgb(19, 18, 18);
+	border-bottom: 4px solid rgb(19, 18, 18);
+	border-left: 4px solid rgb(10, 9, 9);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box6 {
+	background: rgb(214, 211, 211);
+	border-top: 1px solid rgb(151, 148, 148);
+	border-right: 4px solid rgb(19, 18, 18);
+	border-bottom: 4px solid rgb(19, 18, 18);
+	border-left: 1px solid rgb(151, 148, 148);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box5 {
+	background: rgb(214, 211, 211);
+	border-top: 1px solid rgb(151, 148, 148);
+	border-right: 4px solid rgb(19, 18, 18);
+	border-bottom: 1px solid rgb(151, 148, 148);
+	border-left: 4px solid rgb(10, 9, 9);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box4 {
+	background: rgb(214, 211, 211);
+	border-top: 1px solid rgb(151, 148, 148);
+	border-right: 4px solid rgb(19, 18, 18);
+	border-bottom: 1px solid rgb(151, 148, 148);
+	border-left: 1px solid rgb(151, 148, 148);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box3 {
+	background: rgb(214, 211, 211);
+	border-top: 1px solid rgb(151, 148, 148);
+	border-right: 1px solid rgb(151, 148, 148);
+	border-bottom: 4px solid rgb(19, 18, 18);
+	border-left: 4px solid rgb(10, 9, 9);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box2 {
+	background: rgb(214, 211, 211);
+	border-top: 1px solid rgb(151, 148, 148);
+	border-right: 1px solid rgb(151, 148, 148);
+	border-bottom: 4px solid rgb(19, 18, 18);
+	border-left: 1px solid rgb(151, 148, 148);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box1 {
+	background: rgb(214, 211, 211);
+	border-top: 1px solid rgb(151, 148, 148);
+	border-right: 1px solid rgb(151, 148, 148);
+	border-bottom: 1px solid rgb(151, 148, 148);
+	border-left: 4px solid rgb(10, 9, 9);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.box0 {
+	background: rgb(214, 211, 211);
+	border-top: 1px solid rgb(151, 148, 148);
+	border-right: 1px solid rgb(151, 148, 148);
+	border-bottom: 1px solid rgb(151, 148, 148);
+	border-left: 1px solid rgb(151, 148, 148);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(224, 218, 218);
+}
+.image {
+	width:40px
+}
+</style>
+<body>
+	<div id="grid" class=game-board>
+		<div id="red" class ="animate">
+			<button onclick="myMove('red')" class="button" style="background-color: red" id="redbut"></button>
+		</div>
+		<div id="green" class ="animate">
+			<button onclick="myMove('green')" class="button" style="background-color: green" id="greenbut"></button>
+		</div>
+		<div id="blue" class ="animate">
+			<button onclick="myMove('blue')" class="button" style="background-color: blue" id="bluebut"></button>
+		</div>
+		<div id="yellow" class ="animate">
+			<button onclick="myMove('yellow')" class="button" style="background-color: yellow" id="yellowbut"></button>
+		</div>
+		<div id="black" class ="animate">
+			<button onclick="myMove('black')" class="button" style="background-color: black" id="blackbut"></button>
+		</div>
+	</div>
+	<script>
+		var squareurl = "http://192.168.1.5:8000/api/squares"
+		overhead = 7
+		box_size = 50
+        var active = false
+        var speed=5
+        var obstacles=new Array(256)
+        var left_arr=[1,5,7,9,11,13,15]
+        function getRandomInt(min,max,arr) {
+            var arr=[119,120,135,136]
+            rand=null
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            while(rand===null || arr.includes(rand)) {
+                rand=Math.floor(Math.random() * (max - min) + min); 
+            }
+            print(rand)
+            return rand
+        }
+		function getBoard() {
+			red = 0
+			green = 31
+			blue = 14
+			yellow = 90
+			black = 95
+			sessionStorage.setItem('pos_red', red)
+			sessionStorage.setItem('pos_green', green)
+			sessionStorage.setItem('pos_blue', blue)
+			sessionStorage.setItem('pos_yellow', yellow)
+			sessionStorage.setItem('pos_black', black)
+            sessionStorage.setItem('active','false')
 
+			elem = document.getElementById('red');
+			elem.style.top = Math.floor(red/16) * 50 + overhead + "px"
+			elem.style.left = 50*(red%16) + overhead + "px"
+			elem = document.getElementById('green');
+			elem.style.top = Math.floor(green/16) * 50 + overhead + "px"
+			elem.style.left = 50*(green%16) + overhead + "px"
+			elem = document.getElementById('blue');
+			elem.style.top = Math.floor(blue/16) * 50 + overhead + "px"
+			elem.style.left = 50*(blue%16) + overhead + "px"
+			elem = document.getElementById('yellow');
+			elem.style.top = Math.floor(yellow/16) * 50 + overhead + "px"
+			elem.style.left = 50*(yellow%16) + overhead + "px"
+			elem = document.getElementById('black');
+			elem.style.top = Math.floor(black/16) * 50 + overhead + "px"
+			elem.style.left = 50*(black%16) + overhead + "px"
 
-		   
-            	
-            	
-            var squareurl = "http://192.168.1.5:8000/api/squares"
-            function loadGames() {
-        			var xmlhttp = new XMLHttpRequest();
-        			xmlhttp.open("GET",squareurl);
-        			xmlhttp.onreadystatechange = function() {
-          			if(xmlhttp.readyState ===4 && xmlhttp.status ===200) {
-            				var squares = JSON.parse(xmlhttp.responseText);
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET",squareurl);
+			xmlhttp.onreadystatechange = function() {
+				if(xmlhttp.readyState ===4 && xmlhttp.status === 200) {
+					var squares = JSON.parse(xmlhttp.responseText);
+					var html = ''
+					
+					var images=new Array(256)
+					for(var i in squares){
+						obstacles[squares[i].posx*16+squares[i].posy]=squares[i].obstacle
+						images[squares[i].posx*16+squares[i].posy]=squares[i].color +"_"+squares[i].symbol
+					}
+					for (i = 0; i < 256; i++){
+						var image="/static/"+images[i]+".png"
+						if(obstacles[i]==15 || images[i]=="Blanc_Blanc"){
+							html+=`<div class="box`+obstacles[i].toString()+`" ></div>`
+						}
+						else{
+							html += `<div class="box`+obstacles[i].toString()+`" ></div>`
+						}
+					}
+					
+					document.getElementById("grid").innerHTML += html;
+				}
+                
+			}
+			xmlhttp.send();
+		}
+		window.onload = function(){
+			getBoard();
+		}
+
+		function myMove(eid) {
+            sessionStorage.setItem("active", false)
+			console.log("myMove initiated...")
+			let id = null;
+			const elem = document.getElementById(eid); 
+            
+            
+			document.onkeydown = function(e) {
+
+                function disableButtons() {
+                    document.getElementById("redbut").disabled=true;
+                    document.getElementById("greenbut").disabled=true;
+                    document.getElementById("bluebut").disabled=true;
+                    document.getElementById("yellowbut").disabled=true;
+                    document.getElementById("blackbut").disabled=true;
+                }
+
+                function enableButtons() {
+                    document.getElementById("redbut").disabled=false;
+                    document.getElementById("greenbut").disabled=false;
+                    document.getElementById("bluebut").disabled=false;
+                    document.getElementById("yellowbut").disabled=false;
+                    document.getElementById("blackbut").disabled=false;
+                }
+
+                
+                if(sessionStorage.getItem("active")==='true'){
+                    e.stopImmediatePropagation();
+                    return;
+                }
+                
+				var str = "No key selected";
+				var pos = 0;
+                
+					sessionStorage.setItem("active", true)
+                    disableButtons()
+					pos = sessionStorage.getItem('pos_'+eid)
+					top_pos = Math.floor(pos/16) * 50 + overhead
+					left_pos = (pos%16) * 50 + overhead
+                    var redR=sessionStorage.getItem('pos_red')
+                    var greenR=sessionStorage.getItem('pos_green')
+                    var blueR=sessionStorage.getItem('pos_blue')
+                    var yellowR=sessionStorage.getItem('pos_yellow')
+                    var blackR=sessionStorage.getItem('pos_black')
+                    
+					switch (e.keyCode) {
+						case 37:
+							str = 'Left Key pressed!';
+                            console.log(eid)
+							id = setInterval(left, 1);
                             
-            				var html = `<div class=game-board>`
-                                var obstacles=new Array(256)
-                                var images=new Array(256)
-                                for(var i in squares){
-                                    obstacles[squares[i].posx*16+squares[i].posy]=squares[i].obstacle
-                                    images[squares[i].posx*16+squares[i].posy]=squares[i].color +"_"+squares[i].symbol
+                             var start=Math.floor(pos/16)*16
+                             var end=parseInt(pos)
+                            
+                            for(var i=end; i>=start; i--){
+                                if((i==yellowR && eid!="yellow") || (i==blueR && eid!="blue") || (i==greenR && eid!="green") || (i==blackR && eid!="black") || (i==redR && eid!="red")) {
+                                    obstacle=(i-start+1)*50+7
+                                    break
                                 }
-                                for (i = 0; i < 256; i++){
-                                    
-                                    var image="/static/"+images[i]+".png"
-                                    if(obstacles[i]==15 || images[i]=="Blanc_Blanc"){
-                                        html+=`<div class="box`+obstacles[i].toString()+`" ></div>`
+
+                                if(obstacles[i]%2!=0 && obstacles[i]!=0){
+                                    var obstacle=(i-start)*50+7
+                                    break
+                                }
+                            }
+                            console.log(sessionStorage.getItem('pos_red'))
+                            
+                            console.log(sessionStorage.getItem('pos_blue'))
+                            console.log(sessionStorage.getItem('pos_green'))
+                            console.log(sessionStorage.getItem('pos_black'))
+                            function left() {
+                                    if (left_pos==obstacle) {
+                                        sessionStorage.setItem("active", false)
+                                        sessionStorage.setItem('pos_'+eid, 16*((top_pos-overhead)/50)+(left_pos-overhead)/50)
+                                        clearInterval(id);
+                                        
+                                        enableButtons()
+                                    } else {
+                                        left_pos-=speed; 
+                                        elem.style.left = left_pos + "px";
+                                        //obs=obstacles[end] 
                                     }
-                                    else{
-              		                html += `<div class="box`+obstacles[i].toString()+`" ><img class="image" src=${image}></div>`
-            	                    }
+                            }
+							break;
+						case 38:
+							str = 'Up Key pressed!';
+							id = setInterval(up, 1);
+                            start=Math.floor(pos%16)
+                            end=parseInt(pos)
+                            console.log(end,start)
+                            for(var i=end; i>=start; i-=16){
+                                if((i==yellowR && eid!="yellow") || (i==blueR && eid!="blue") || (i==greenR && eid!="green") || (i==blackR && eid!="black") || (i==redR && eid!="red")) {
+                                    obstacle=(Math.floor(i/16)+1)*50+7
+                                    break
                                 }
-            	                html += `</div>`;
-                                console.log(images)
-                                document.getElementById("grid").innerHTML = html;
-                                
-            				//main table content we fill from data from the rest call
-            				// var main ="";
-            				// for (i = 0; i < games.length; i++){
-              				// 	main += "<tr><td>"+games[i].id+"</td><td>"+games[i].turn_number+"</td><td>"+games[i].status+"</td><td>"+games[i].targets_remaining+"</td></tr>";
-            				// }
-            				// var tblbottom = "</table>";
-            				// var tbl = tbltop + main + tblbottom;
-            				// document.getElementById("gameinfo").innerHTML = tbl;
-          			}
-        			};
-        			xmlhttp.send();
-      		}
-      		window.onload = function(){
+                                if(obstacles[i]>=8){
+                                    var obstacle=(Math.floor(i/16))*50+7
+                                    break
+                                }
+                            }
+                                console.log(obstacle)
+							function up() {
+								if (top_pos == obstacle) {
+									sessionStorage.setItem("active", false)
+									sessionStorage.setItem('pos_'+ eid, 16*((top_pos-overhead)/50)+(left_pos-overhead)/50)
+									clearInterval(id);
+                                    enableButtons()
+								} else {
+									top_pos-=speed; 
+									elem.style.top = top_pos + "px"; 
+								}
+							}
+							break;
+						case 39:
+							str = 'Right Key pressed!';
+							id = setInterval(right, 1);
+                            var start=parseInt(pos)
+                            var end=Math.floor(pos/16+1)*16-1
+                            var arrR=[4,5,6,7,12,13,14,15]
+                            for(var i=start; i<=end; i++){
+                                if((i==yellowR && eid!="yellow") || (i==blueR && eid!="blue") || (i==greenR && eid!="green") || (i==blackR && eid!="black") || (i==redR && eid!="red")) {
+                                    obstacle=(i-Math.floor(pos/16)*16-1)*50+7
+                                    break
+                                }
+                                if(arrR.includes(obstacles[i])) {
+                                   var obstacle=(i-Math.floor(pos/16)*16)*50+7
+                                   break
+                                }
+                            }
 
-        			loadGames();
-      		}
-
-    	</script>
-
-
-
-  </body>
+                            console.log(obstacle)
+							function right() {
+								if (left_pos == obstacle) {
+									sessionStorage.setItem("active", false)
+									sessionStorage.setItem('pos_'+eid, 16*((top_pos-overhead)/50)+(left_pos-overhead)/50)
+									clearInterval(id);
+                                    enableButtons()
+								} else {
+									left_pos+=speed; 
+									elem.style.left = left_pos + "px"; 
+									sessionStorage.setItem('pos_'+eid, left_pos)
+								}
+							}
+							break;
+						case 40:
+							str = 'Down Key pressed!';
+							id = setInterval(down, 1);
+                            var start=parseInt(pos)
+                            var arrD=[2,3,6,7,10,11,14,15]
+                            var end=parseInt(start+(15-Math.floor(pos/16))*16)
+                            
+                            for(var i=start; i<=end; i+=16){
+                                if((i==yellowR && eid!="yellow") || (i==blueR && eid!="blue") || (i==greenR && eid!="green") || (i==blackR && eid!="black") || (i==redR && eid!="red")) {
+                                    obstacle=(Math.floor(i/16)-1)*50+7
+                                    break
+                                }
+                                if(arrD.includes(obstacles[i])){
+                                    var obstacle=Math.floor(i/16)*50+7
+                                    break
+                                }
+                            }
+                            
+                            
+							function down() {
+								if (top_pos == obstacle) {
+									sessionStorage.setItem("active", false)
+									sessionStorage.setItem('pos_'+eid, 16*((top_pos-overhead)/50)+(left_pos-overhead)/50)
+									clearInterval(id);
+                                    enableButtons()
+								} else {
+									top_pos+=speed; 
+									elem.style.top = top_pos + "px"; 
+								}
+							}
+							break;
+                    }
+				console.log(str);
+				
+			}
+            
+		}
+	</script>
+</body>
 </html>
