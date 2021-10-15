@@ -56,15 +56,16 @@ class Turn(models.Model):
     VORTEX='Vortex'
     colors=[(RED,'Red'),(GREEN,'Green'),(BLUE,'Blue'),(YELLOW,'Yellow'),(MULTI,'Multi'),(BLANC,'Blanc')]
     symbols=[(CIRCLE,'Circle'),(SQUARE,'Square'),(TRIANGLE,'Triangle'),(HEX,'Hex'),(VORTEX,'Vortex'),(BLANC,'Blanc')]
-    targetC=models.CharField(max_length=6,choices=colors)
-    TargetS=models.CharField(max_length=8,choices=symbols)
-    turn_number=models.IntegerField(null=False,default=0)
-    pos_red=models.IntegerField(null=False)
-    pos_blue=models.IntegerField(null=False)
-    pos_green=models.IntegerField(null=False)
-    pos_yellow=models.IntegerField(null=False)
-    pos_black=models.IntegerField(null=False)
-    winner=models.ForeignKey(User,null=False,on_delete=models.CASCADE)
+    targetC=models.CharField(max_length=6,choices=colors,null=True)
+    TargetS=models.CharField(max_length=8,choices=symbols,null=True)
+    turn_number=models.IntegerField(default=0,null=True)
+    pos_red=models.IntegerField(null=True)
+    pos_blue=models.IntegerField(null=True)
+    pos_green=models.IntegerField(null=True)
+    pos_yellow=models.IntegerField(null=True)
+    pos_black=models.IntegerField(null=True)
+    sequence=models.TextField(null=True)
+    winner=models.ForeignKey(User,null=True,on_delete=models.CASCADE)
     game=models.ForeignKey(Game,null=False,on_delete=models.CASCADE)
 
     class JSONAPIMeta:

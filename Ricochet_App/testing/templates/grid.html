@@ -241,6 +241,7 @@ body {
         var speed=5
         var obstacles=new Array(256)
         var left_arr=[1,5,7,9,11,13,15]
+		var domain="http://192.168.1.2:8000"
 		var sequence=[]
         function getRandomInt(min,max,arr) {
             var arr=[119,120,135,136]
@@ -496,23 +497,27 @@ body {
 				console.log(str);
 			}
         }
-		function apiPost(model) {
+		function apiPost(model,json_file) {
 			var baseurl = domain +"/api/"+model
   			var xmlhttp = new XMLHttpRequest()
-        			xmlhttp.open("POST",baseurl)
+        	xmlhttp.open("POST",baseurl)
 			xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
         			
-        			xmlhttp.onreadystatechange = function() {
-          			if(xmlhttp.readyState ===4 && xmlhttp.status ===201){
+        	xmlhttp.onreadystatechange = function() {
+          		if(xmlhttp.readyState ===4 && xmlhttp.status ===201){
             				
-          			}
-        			}
-                    var username = document.getElementById('username').value
-                    var password = document.getElementById('pass').value
+          		}
+        	}
+            
                     
-        			xmlhttp.send(JSON.stringify({ "username": username, "password": password}))
+        	xmlhttp.send(json_file)
 		}
 
+		function initTurn() {
+			var game=1
+			apiPost("turns",JSON.stringify({ "game": game}))
+		}
+		
 		
 	</script>
 </body>
