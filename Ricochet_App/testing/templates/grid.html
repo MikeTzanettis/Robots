@@ -234,14 +234,14 @@ body {
 		<button onclick="initTurn()">New Turn</button>
 	</div>
 	<script>
-		var squareurl = "http://192.168.1.2:8000/api/squares"
+		var squareurl = "http://192.168.1.14:8000/api/squares"
 		overhead = 7
 		box_size = 50
         var active = false
         var speed=5
         var obstacles=new Array(256)
         var left_arr=[1,5,7,9,11,13,15]
-		var domain="http://192.168.1.2:8000"
+		var domain="http://192.168.1.14:8000"
 		var sequence=[]
         function getRandomInt(min,max,arr) {
             var arr=[119,120,135,136]
@@ -359,11 +359,12 @@ body {
                     var blueR=sessionStorage.getItem('pos_blue')
                     var yellowR=sessionStorage.getItem('pos_yellow')
                     var blackR=sessionStorage.getItem('pos_black')
-                    
+									
 					switch (e.keyCode) {
 						case 37: 
 							sessionStorage.setItem("active", true)
 							str = 'L';
+							console.log(str);
                             console.log(eid)
 							id = setInterval(left, 1);
                             sequence
@@ -399,6 +400,7 @@ body {
 						case 38:
 							sessionStorage.setItem("active", true)
 							str = 'U';
+							console.log(str);
 							console.log(eid)
 							id = setInterval(up, 1);
                             start=Math.floor(pos%16)
@@ -430,6 +432,7 @@ body {
 						case 39:
 							sessionStorage.setItem("active", true)
 							str = 'R';
+							console.log(str);
 							console.log(eid)
 							id = setInterval(right, 1);
                             var start=parseInt(pos)
@@ -463,7 +466,7 @@ body {
 						case 40:
 							sessionStorage.setItem("active", true)
 							str = 'D';
-							console.log(eid)
+							
 							id = setInterval(down, 1);
                             var start=parseInt(pos)
                             var arrD=[2,3,6,7,10,11,14,15]
@@ -479,10 +482,13 @@ body {
                                     break
                                 }
                             }
-                            
+                            		var old_pos=top_pos
+									
                             
 							function down() {
 								if (top_pos == obstacle) {
+									
+									
 									sessionStorage.setItem("active", false)
 									sessionStorage.setItem('pos_'+eid, 16*((top_pos-overhead)/50)+(left_pos-overhead)/50)
 									clearInterval(id);
@@ -491,10 +497,14 @@ body {
 									top_pos+=speed; 
 									elem.style.top = top_pos + "px"; 
 								}
+								
 							}
+							
 							break;
+							
                     }
-				console.log(str);
+					
+				
 			}
         }
 		function apiPost(model,json_file) {

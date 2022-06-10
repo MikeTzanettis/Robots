@@ -60,3 +60,22 @@ class BidViewSet(viewsets.ModelViewSet):
 
 def page(request,name):
     return render(request, name + ".html")
+
+def create(self, request):
+        try:
+            data = request.data
+            s = UserSerializer(data=data)
+            print("Valid data: "+str(s.is_valid()))
+            if s.is_valid():
+                username = data['username']
+                password = data['password']
+                
+                
+                User.objects.create_user(username=username,password=password)
+                return Response(status=201, data=data)
+            else:
+                data = s.errors
+                return Response(status=400, data=data)
+        except Exception as e:
+            print(e)
+            return HttpResponse(status=400) 
