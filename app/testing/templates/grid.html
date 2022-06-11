@@ -234,14 +234,14 @@ body {
 		<button onclick="initTurn()">New Turn</button>
 	</div>
 	<script>
-		var squareurl = "http://192.168.1.14:8000/api/squares"
+		var squareurl = "http://192.168.1.4:31295/api/squares"
 		overhead = 7
 		box_size = 50
         var active = false
         var speed=5
         var obstacles=new Array(256)
         var left_arr=[1,5,7,9,11,13,15]
-		var domain="http://192.168.1.14:8000"
+		var domain="http://192.168.1.4:31295"
 		var sequence=[]
         function getRandomInt(min,max,arr) {
             var arr=[119,120,135,136]

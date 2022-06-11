@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+        name: robots-backend
+        labels:
+                app: robots-backend
+spec:
+        #replicas: 1
+        selector:
+                matchLabels:
+                        app: robots-backend
+        template:
+                metadata:
+                        labels:
+                                app: robots-backend
+                spec:
+                        containers:
+                                - image: gtzanet/robots-backend:latest
+                                  name: robots-backend
+                                  envFrom:
+                                          - secretRef:
+                                                  name: robots-backend-secrets
+                                          - configMapRef:
+                                                  name: robots-backend-config
+                                  ports:
+                                          - containerPort: 8000
+                                            name: gunicorn
