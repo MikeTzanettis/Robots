@@ -5,6 +5,9 @@ from testing.serializers import *
 from django.http import HttpResponse
 from rest_framework.response import Response
 from django.http import HttpResponseRedirect
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+
 # Create your views here.
 class GameViewSet(viewsets.ModelViewSet):
     """
@@ -12,7 +15,6 @@ class GameViewSet(viewsets.ModelViewSet):
     """
     serializer_class = GameSerializer
     queryset = Game.objects.all()
-
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
@@ -36,6 +38,14 @@ class UserViewSet(viewsets.ModelViewSet):
         except Exception as e:
             print(e)
             return HttpResponse(status=400) 
+
+class CustomObtainAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data['token'])
+        print(token)
+        role = token.user.role
+        return Response({'token': token.key, 'role': role, 'id': token.user_id})
 
 class SquareViewSet(viewsets.ModelViewSet):
     """

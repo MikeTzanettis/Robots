@@ -30,8 +30,8 @@ router.register("bids",BidViewSet,"bids")
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('<str:name>/',views.page)
-    
+    path('<str:name>/',views.page),
+    path('authenticate', CustomObtainAuthToken.as_view())#views.CustomObtainAuthToken)   
 ]
 
 urlpatterns+= staticfiles_urlpatterns()
